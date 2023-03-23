@@ -26,6 +26,7 @@
       <button @click="products[i].report++">허위매물신고</button> <span>{{products[i].report }}</span>
     </div>
 
+    
   </div>
 </template>
 
