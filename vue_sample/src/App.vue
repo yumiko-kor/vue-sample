@@ -1,7 +1,9 @@
 <template>
   <div>
 
-    <div class="black-bg" v-if="modal == true" @click="modal = false">
+    <Modal :products ="products" :detail="detail" :modal="modal" />
+
+    <!-- <div class="black-bg" v-if="modal == true" @click="modal = false">
       <div class="white-bg">
         <p>자세히 보기</p>
         <img :src="products[detail].image" class="small-img">
@@ -10,7 +12,7 @@
 
         <button @click="modal = false">창 닫기</button>
       </div> 
-    </div>
+    </div> -->
 
     <div class="menu">
       <a v-for="tab in menus" :key="tab">{{ tab }}</a>
@@ -33,9 +35,9 @@
 <script>
 
 
-import contents from './assets/js/content.js';
+import products from './assets/js/content.js';
 import DiscountBanner from './assets/component/DiscountBanner.vue';
-
+import Modal from './assets/component/TheModal.vue';
 
 
 export default {
@@ -44,7 +46,7 @@ export default {
     return {
       report: [0,0,0],
       menus : ['Home', 'Shop', 'About'],
-      products : contents,
+      products : products,
 
       // 모달창
       detail: 0,
@@ -53,6 +55,7 @@ export default {
   },
   components: {
     DiscountBanner : DiscountBanner,
+    Modal : Modal,
   },
 
   methods : { 
@@ -71,19 +74,6 @@ body {
 div {
   box-sizing: border-box;
 }
-
-.black-bg {
-  width: 100%; height:100%;
-  background: rgba(0,0,0,0.5);
-  position: fixed; padding: 20px;
-}
-
-.white-bg {
-  width: 100%; background: white;
-  border-radius: 8px;
-  padding: 20px;
-  margin-top: 50%;
-} 
 
 .room img {
   width: 85%;
@@ -112,9 +102,5 @@ div {
 
 .gray {
   color: gray;
-}
-
-.small-img {
-  width: 85%;
 }
 </style>
